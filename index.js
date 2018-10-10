@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 const port = process.env.PORT || 3000;
 const perPage = process.env.PAGE_SIZE || 10;
 const mongoUrl = process.env.MONGODB_URI || 'mongodb://mlh-localhost:uSI0Ir6tQg5qtj4Ao485wmlrCFDHmkMTqcrkhLuD9mRHkfj6NIkdB9Q0iZf5xXDzkmeWamyfmf89DW2a1fGC4g==@mlh-localhost.documents.azure.com:10255/mlh-localhost?ssl=true&replicaSet=globaldb';
-const defaultPassword = process.env.HACKERLOG_PASSWORD || 'P@ssw0rd!';
+const defaultPassword = process.env.HACKERLOG_PASSWORD || '111111';
 
 // Create post schema
 const updateSchema = mongoose.Schema({
@@ -43,19 +43,19 @@ app.get('/', (req, res) => {
 });
 
 // Posting update
-app.method('where', (paramOne, paramTwo) => {
+app.post('/update', (req, res) => {
   const { body: { name, update, password } } = req;
   if (!name || !update) {
     res.redirect('/error');
-  } else if () {
+  } else if (password) {
     const userUpdate = new Update({ name, update });
     userUpdate.save().then(() => {
-      // do a redirect here
+      res.redirect ("/")
     }).catch(() => {
-      // do a redirect here
+      res.redirect('/error')
     });
   } else {
-    // do a redirect here
+    res.redirect('/?wrongPassword=true')
   }
 });
 
