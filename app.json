@@ -1,0 +1,7 @@
+{
+  "name": "HakerLog",
+  "description": "This app does one little thing, and does it well.",
+  "keywords": ["node", "express", "static"],
+  "repository": "https://github.com/ilcomarian/azure.app",
+  "image": "heroku/nodejs"
+}
